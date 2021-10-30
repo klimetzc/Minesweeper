@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="shortcut icon"
+            href="images/mine-logo-white.svg"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <title>Minesweeper</title>
+        <script type="module" src="Modules/Cell.js"></script>
+        <script type="module" src="Modules/Game.js"></script>
+        <script type="module" src="Modules/main.js"></script>
+    </head>
+    <body>
+        <script>
+            document.oncontextmenu = function () {
+                return false;
+            };
+        </script>
+        <div id="sidebar" clas="noSelect">
+            <div class="logo-with-name">
+                <div class="logo">
+                    <a href="https://github.com/FlameKoDan" target="_blank"
+                        ><img src="images/mine-logo-white.svg" alt=""
+                    /></a>
+                </div>
+                <div class="logo-name">MINESWEEPER</div>
+            </div>
+
+            <div class="diff-choice">
+                <form action="#">
+                    <p>Choose difficulty</p>
+                    <input type="radio" name="diff" id="easy" value="easy" />
+                    <label for="easy">Easy</label>
+                    <input
+                        type="radio"
+                        name="diff"
+                        id="medium"
+                        value="medium"
+                    />
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="diff" id="hard" value="hard" />
+                    <label for="hard">Hard</label>
+                </form>
+                <p class="controls">
+                    Left click - open cell <br />
+                    Right click - set/unset flag
+                </p>
+            </div>
+            <!-- <div class="start-button">Начать игру!</div> -->
+        </div>
+        <main>
+            <div id="container">
+                <!-- FIELD HERE -->
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#container {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    gap: 4px;
+}
+.kek {
+    background: black;
+    height: 30px;
+    width: 30px;
+}
