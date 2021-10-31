@@ -92,6 +92,8 @@ export class Game {
         }
     }
     openAround(row, col) {
+        // Если вокруг не правильно расставленны флаги не всегда корректо работает
+        // Вроде поправил, как затестить точно - хз
         let around = [
             [row - 1, col - 1],
             [row - 1, col],
@@ -152,6 +154,10 @@ export class Game {
                 ) {
                     currentDOM.classList.remove('closed');
                     this.openAround(row, col, currentDOM);
+                } else if (clickedDOM.classList.contains('closed')) {
+                    clickedDOM.classList.remove('closed');
+                } else {
+                    console.log('NOTHING');
                 }
             }
         }
