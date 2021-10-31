@@ -2,8 +2,7 @@
 import { Game } from './Game.js';
 
 let radiobuttons = document.querySelectorAll('input[name="diff"]');
-// let difficult_dom = document.querySelector('input[checked]').value;
-// console.log(difficult_dom);
+
 radiobuttons.forEach((elem) => {
     elem.addEventListener('change', function (event) {
         console.clear();
@@ -123,9 +122,11 @@ radiobuttons.forEach((elem) => {
                 let current = event.target;
                 let row = current.dataset.row;
                 let col = current.dataset.col;
-
+                if (game.isDone) {
+                    console.log('Нельзя');
+                }
                 // SET FLAG
-                if (
+                else if (
                     current.classList.contains('closed') &&
                     !current.classList.contains('flag')
                 ) {

@@ -42,7 +42,7 @@ export class Game {
         // Вызывается победа
         // ...
         alert(
-            `Увы, ты проиграл. Угадано ${this.totalFlagedMines} мин из ${this.TOTAL_MINES}`
+            `Oops, you have lost.\n Guessed ${this.totalFlagedMines} mines out of ${this.TOTAL_MINES}`
         );
         this.isDone = true;
     }
@@ -50,7 +50,7 @@ export class Game {
     throwWinGame() {
         // Вызывается проигрыш
         // ...
-        alert('Ты победил! Молодец');
+        alert('Winner Winner Chicken Dinner ');
         this.isDone = true;
     }
 
@@ -127,7 +127,6 @@ export class Game {
                     (currentDOM.classList.contains('closed') ||
                         clickedDOM.classList.contains('closed'))
                 ) {
-                    // currentDOM.classList.remove('closed');
                     document
                         .querySelector(
                             `[data-row='${currentRow}'][data-col='${currentCol}']`
@@ -139,6 +138,7 @@ export class Game {
                     this.square[currentRow][currentCol].minesAround == 0 &&
                     currentDOM.classList.contains('closed')
                 ) {
+                    clickedDOM.classList.remove('closed');
                     currentDOM.classList.remove('closed');
                     this.openAround(row, col, currentDOM);
                 } else if (
