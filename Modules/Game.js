@@ -42,7 +42,7 @@ export class Game {
         // Вызывается победа
         // ...
         alert(
-            `Oops, you have lost.\n Guessed ${this.totalFlagedMines} mines out of ${this.TOTAL_MINES}`
+            `Oops, you have lost.\nGuessed ${this.totalFlagedMines} mines out of ${this.TOTAL_MINES}`
         );
         this.isDone = true;
     }
