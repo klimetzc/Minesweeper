@@ -4,7 +4,7 @@ import { Game } from './Game.js';
 let radiobuttons = document.querySelectorAll('input[name="diff"]');
 
 radiobuttons.forEach((elem) => {
-    elem.addEventListener('change', function (event) {
+    elem.addEventListener('click', function (event) {
         console.clear();
         let difficult_dom = event.target.value;
         console.log(

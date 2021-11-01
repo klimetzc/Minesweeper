@@ -85,6 +85,9 @@ body {
     color: black;
     background: white;
 }
+.diff-choice form input:checked + label:hover {
+    animation: pulse 1s infinite;
+}
 .diff-choice form label {
     display: flex;
     align-items: center;
@@ -245,7 +248,7 @@ main {
         box-shadow: 0 0 0px 0px rgba(255, 255, 255, 1);
     }
     to {
-        box-shadow: 0 0 0px 15px rgba(255, 255, 255, 0);
+        box-shadow: 0 0 0px 10px rgba(255, 255, 255, 0);
     }
 }
 @keyframes rotateLogo {
