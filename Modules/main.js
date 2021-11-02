@@ -105,6 +105,22 @@ radiobuttons.forEach((elem) => {
                             cell.classList.remove('flag');
                         }
                     }
+                    for (let cell of cells) {
+                        let row = cell.dataset.row;
+                        let col = cell.dataset.col;
+                        if (
+                            game.square[row][col].isFlag &&
+                            !game.square[row][col].isMine()
+                        ) {
+                            cell.classList.remove('flag');
+                            cell.style.backgroundImage =
+                                "url('images/wrong_mine.png')";
+                            cell.textContent = '';
+                            cell.style.backgroundSize = '30px';
+                            cell.style.backgroundPosition = '5px 5px';
+                            cell.style.backgroundRepeat = 'no-repeat';
+                        }
+                    }
                     game.throwLoseGame();
                     current.style.backgroundColor = '#F44336';
                 }
