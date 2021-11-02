@@ -1,12 +1,13 @@
 import { Cell } from './Cell.js';
 export class Game {
+    #TOTAL_MINES;
     constructor(size) {
         this.size = size; // Поле квадратное. Это размер стороны
         this.field = []; // 1D Array of Cells
         this.square = []; // 2D Array of Cells
         this.isDone = false; // Игра завершена?
 
-        this.TOTAL_MINES = +(this.size ** 2 / 8).toFixed(0); // Кол-во мин на поле
+        this.#TOTAL_MINES = +(this.size ** 2 / 8).toFixed(0); // Кол-во мин на поле
         this.totalFlags = 0; // Кол-во расставленных флагов
         this.totalFlagedMines = 0; // Кол-во мин под флагом
 
@@ -38,11 +39,21 @@ export class Game {
         console.log(this.square);
     }
 
+    // get TOTAL_MINES() {
+    //     return this.TOTAL_MINES;
+    // }
+
+    getTotalMines() {
+        return this.#TOTAL_MINES;
+    }
+
     throwLoseGame() {
         // Вызывается победа
         // ...
         alert(
-            `Oops, you have lost.\nGuessed ${this.totalFlagedMines} mines out of ${this.TOTAL_MINES}`
+            `Oops, you have lost.\nGuessed ${
+                this.totalFlagedMines
+            } mines out of ${this.getTotalMines()}`
         );
         this.isDone = true;
     }
@@ -50,13 +61,13 @@ export class Game {
     throwWinGame() {
         // Вызывается проигрыш
         // ...
-        alert('Winner Winner Chicken Dinner ');
+        alert('Winner Winner Chicken Dinner');
         this.isDone = true;
     }
 
     placeMines() {
         // Расставляет мины по полю в рандомном порядке, сомнительная эффективность, но зато работает))
-        let counter = this.TOTAL_MINES;
+        let counter = this.getTotalMines();
         while (counter > 0) {
             let row = Game.randomInteger(0, this.size - 1);
             let col = Game.randomInteger(0, this.size - 1);
@@ -71,7 +82,7 @@ export class Game {
                 [row + 1, col + 1],
             ];
             // console.log(row, col, this.square[row][col]);
-            if (this.square[row][col].isMine === false) {
+            if (!this.square[row][col].isMine()) {
                 // console.log('Сработал IF');
                 this.square[row][col].setMine();
                 for (let [row, col] of around) {
@@ -144,7 +155,6 @@ export class Game {
                 } else if (
                     +this.square[row][col].minesAround > 0 &&
                     currentDOM.classList.contains('closed')
-                    // this.square[row][col].isMine
                 ) {
                     currentDOM.classList.remove('closed');
                     // this.openAround(row, col, targetDOM);
@@ -156,9 +166,10 @@ export class Game {
                     this.openAround(row, col, currentDOM);
                 } else if (clickedDOM.classList.contains('closed')) {
                     clickedDOM.classList.remove('closed');
-                } else {
-                    console.log('NOTHING');
                 }
+                // else {
+                //     console.log('NOTHING');
+                // }
             }
         }
     }
@@ -185,7 +196,7 @@ export class Game {
         ];
         for (let [row, col] of around) {
             // ...
-            if (this.field[row][col].isMine) counter++;
+            if (this.field[row][col].isMine()) counter++;
         }
         console.log(counter);
         return counter;

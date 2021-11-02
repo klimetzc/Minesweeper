@@ -1,6 +1,7 @@
 export class Cell {
+    #isMine;
     constructor(row, col, index) {
-        this.isMine = false;
+        this.#isMine = false;
         this.isFlag = false;
 
         this.minesAround = 0;
@@ -15,9 +16,12 @@ export class Cell {
         this.isFlag = false;
     }
     setMine() {
-        this.isMine = true;
+        this.#isMine = true;
     }
     valueOf() {
         return [this.row, this.col];
+    }
+    isMine() {
+        return this.#isMine ? true : false;
     }
 }

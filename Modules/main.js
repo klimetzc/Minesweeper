@@ -68,7 +68,7 @@ radiobuttons.forEach((elem) => {
                         break;
                 }
             }
-            if (targetCell.isMine) {
+            if (targetCell.isMine()) {
                 value.textContent = '';
                 value.style.color = 'red';
                 value.style.backgroundImage = 'url(images/mine-logo-black.svg)';
@@ -91,7 +91,7 @@ radiobuttons.forEach((elem) => {
 
                 // Если мина:
                 if (
-                    game.square[row][col].isMine &&
+                    game.square[row][col].isMine() &&
                     current.classList.contains('closed')
                 ) {
                     for (let cell of cells) {
@@ -99,7 +99,7 @@ radiobuttons.forEach((elem) => {
                         if (
                             !(
                                 cell.classList.contains('flag') &&
-                                game.square[row][col].isMine
+                                game.square[row][col].isMine()
                             )
                         ) {
                             cell.classList.remove('flag');
@@ -135,12 +135,12 @@ radiobuttons.forEach((elem) => {
                     game.square[row][col].setFlag();
                     current.classList.remove('closed');
                     game.totalFlags++;
-                    if (game.square[row][col].isMine) {
+                    if (game.square[row][col].isMine()) {
                         game.totalFlagedMines++;
                     }
                     if (
                         game.totalFlags === game.totalFlagedMines &&
-                        game.totalFlags === game.TOTAL_MINES
+                        game.totalFlags === game.getTotalMines()
                     ) {
                         game.throwWinGame();
                         for (let cell of cells) {
@@ -151,7 +151,7 @@ radiobuttons.forEach((elem) => {
                     console.log(
                         // Легальные читы
                         game.totalFlags,
-                        game.TOTAL_MINES,
+                        game.getTotalMines(),
                         game.totalFlagedMines
                     );
                 }
@@ -166,12 +166,12 @@ radiobuttons.forEach((elem) => {
                     game.square[row][col].unsetFlag();
                     current.classList.add('closed');
                     game.totalFlags--;
-                    if (game.square[row][col].isMine) {
+                    if (game.square[row][col].isMine()) {
                         game.totalFlagedMines--;
                     }
                     if (
                         game.totalFlags === game.totalFlagedMines &&
-                        game.totalFlags === game.TOTAL_MINES
+                        game.totalFlags === game.getTotalMines()
                     ) {
                         game.throwWinGame();
                         for (let cell of cells) {
@@ -182,7 +182,7 @@ radiobuttons.forEach((elem) => {
                     console.log(
                         // Легальные читы
                         game.totalFlags,
-                        game.TOTAL_MINES,
+                        game.getTotalMines(),
                         game.totalFlagedMines
                     );
                 }
