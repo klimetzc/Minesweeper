@@ -13,6 +13,7 @@ radiobuttons.forEach((elem) => {
         );
         let field_size = 10;
 
+        // Выбор сложности и размера поля
         switch (difficult_dom) {
             case 'easy':
                 field_size = 5;
