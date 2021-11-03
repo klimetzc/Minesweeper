@@ -99,7 +99,7 @@ radiobuttons.forEach((elem) => {
                         cell.classList.remove('closed');
                         if (
                             !(
-                                cell.classList.contains('flag') &&
+                                game.square[row][col].isFlag && // cell.classList.contains('flag')
                                 game.square[row][col].isMine()
                             )
                         ) {
@@ -128,7 +128,7 @@ radiobuttons.forEach((elem) => {
                 // Если не флаг и клетка закрыта
                 else if (
                     current.classList.contains('closed') &&
-                    !current.classList.contains('flag')
+                    !game.square[row][col].isFlag //current.classList.contains('flag')
                 ) {
                     game.openAround(+row, +col);
                 }
@@ -145,7 +145,7 @@ radiobuttons.forEach((elem) => {
                 // SET FLAG
                 else if (
                     current.classList.contains('closed') &&
-                    !current.classList.contains('flag')
+                    !game.square[row][col].isFlag //current.classList.contains('flag')
                 ) {
                     console.log('set flag');
                     current.classList.add('flag');
@@ -176,7 +176,7 @@ radiobuttons.forEach((elem) => {
                 // UNSET FLAG
                 else if (
                     !current.classList.contains('closed') &&
-                    current.classList.contains('flag')
+                    game.square[row][col].isFlag //current.classList.contains('flag')
                 ) {
                     console.log('unset flag');
                     current.classList.remove('flag');
