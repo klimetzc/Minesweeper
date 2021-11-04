@@ -132,7 +132,6 @@ export class Game {
                 row <= this.size - 1 &&
                 col <= this.size - 1
             ) {
-                // .. Переделать в switch case?
                 if (
                     this.square[currentRow][currentCol].minesAround > 0 &&
                     (currentDOM.classList.contains('closed') ||
