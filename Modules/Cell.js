@@ -1,4 +1,4 @@
-export class Cell {
+export class Cell { // cell
     #isMine;
     constructor(row, col, index) {
         this.#isMine = false;
